@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaikhara - Descuento exclusivo para clientes de VIS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Archivo', sans-serif;
+            background-color: #f4f4f4;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #2c3e50;
+            position: relative;
+            overflow: hidden;
+        }
+        header .circle, header .triangle {
+            position: absolute;
+            background-color: #ff0606;
+            border-radius: 50%;
+            transition: all 0.5s ease;
+        }
+        header .circle {
+            width: 250px;
+            height: 250px;
+            top: -80px;
+            left: -80px;
+            opacity: 0.9;
+        }
+        header .triangle {
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 300px solid #ff5722;
+            right: -100px;
+            bottom: -150px;
+            opacity: 0.8;
+        }
+        header img {
+            max-width: 300px;
+            z-index: 10;
+            margin-top: 20px;
+        }
+        .main-content {
+            padding: 40px 20px 20px 20px;
+            position: relative;
+        }
+        h1 {
+            color: #ff0606;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.3em;
+            margin: 20px 0;
+        }
+        .highlight {
+            color: #ff5722;
+            font-weight: bold;
+        }
+        .coupon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            position: relative;
+        }
+        .coupon {
+            background-color: #fff;
+            color: #2c3e50;
+            font-size: 1.5em;
+            padding: 15px 30px;
+            border: 2px dashed #ff0606;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+        .coupon:hover {
+            background-color: #ffecec;
+        }
+        .coupon::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+			color: #ff0606;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .copied .coupon::after {
+            content: 'Código copiado';
+            opacity: 1;
+            transform: translateX(-50%) translateY(10px);
+        }
+        .cta {
+            margin-top: 30px;
+        }
+        .cta a {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 1.4em;
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .cta a:hover {
+            background-color: #1a252f;
+        }
+        .background-shape {
+            width: 100%;
+            height: 500px;
+            background-image: url('deporte-entrenamiento-mockup.jpg');
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.15;
+        }
+        footer {
+            margin-top: 0px;
+            background-color: #2c3e50;
+            padding: 20px;
+            color: #fff;
+        }
+        footer p {
+            margin: 10px 0;
+        }
+        footer a {
+            color: #ff0606;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            header img {
+                max-width: 200px;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            p {
+                font-size: 1.2em;
+            }
+            .coupon {
+                font-size: 1.2em;
+                padding: 10px 20px;
+            }
+            .cta a {
+                font-size: 1.2em;
+                padding: 10px 30px;
+            }
+            /* Reducir figuras geométricas en tabletas y mover a los extremos */
+            header .circle {
+                width: 150px;
+                height: 150px;
+                top: -50px;
+                left: -100px;
+            }
+            header .triangle {
+                border-left: 100px solid transparent;
+                border-right: 100px solid transparent;
+                border-bottom: 200px solid #ff5722;
+                right: -70px;
+                bottom: -120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header img {
+                max-width: 150px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1.1em;
+            }
+            .coupon {
+                font-size: 1em;
+                padding: 10px 15px;
+            }
+            .cta a {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+            /* Hacer las figuras geométricas más pequeñas y moverlas más lejos del logo */
+            header .circle {
+                width: 100px;
+                height: 100px;
+                top: -30px;
+                left: -60px;
+            }
+            header .triangle {
+                border-left: 70px solid transparent;
+                border-right: 70px solid transparent;
+                border-bottom: 140px solid #ff5722;
+                right: -60px;
+                bottom: -90px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- Formas geométricas para dar dinamismo -->
+    <div class="circle"></div>
+    <div class="triangle"></div>
+    
+    <!-- Logo de Vaikhara -->
+    <img src="https://dcdn.mitiendanube.com/stores/004/861/354/themes/common/logo-2074438277-1723159449-7da8d0f595c7f04037393f5bb2cd3d1f1723159449-320-0.webp" alt="Logo Vaikhara">
+</header>
+
+<div class="main-content">
+    <div class="background-shape"></div>
+    
+    <h1>¡Beneficio Exclusivo para Clientes de VIS!</h1>
+    <p>Por ser parte del <span class="highlight">Gimnasio VIS</span>, te regalamos un <strong>15% de descuento</strong> en toda la tienda Vaikhara.</p>
+    <p>¡Solo tenés que usar el siguiente cupón!</p>
+    
+    <div class="coupon-container">
+        <div class="coupon" onclick="copyCoupon()">VIS2024</div>
+    </div>
+    
+    <div class="cta">
+        <a href="https://vaikhara.com.ar" target="_blank">¡Canjeá tu descuento ahora!</a>
+    </div>
+	
+	<p style="margin-top: 60px; font-size: 0.9em;">El cupón aplica sobre todos los productos de la tienda. No acumula con otros descuentos.</p>
+</div>
+
+<footer>
+    <p>Vaikhara - <a href="https://vaikhara.com.ar" target="_blank">Visitá nuestra tienda</a></p>
+</footer>
+
+<script>
+    function copyCoupon() {
+        const couponCode = 'VIS2024';
+        navigator.clipboard.writeText(couponCode).then(() => {
+            document.querySelector('.coupon-container').classList.add('copied');
+            setTimeout(() => {
+                document.querySelector('.coupon-container').classList.remove('copied');
+            }, 1300);
+        });
+    }
+</script>
+
+</body>
+</html>
